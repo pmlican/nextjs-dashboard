@@ -5,11 +5,29 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Attach to Chrome",
+            "port": 9230,
+            "request": "attach",
+            "type": "node",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+        },
+        {
             "type": "chrome",
             "request": "launch",
             "name": "Launch Chrome against localhost",
-            "url": "http://localhost:3003",
-            "webRoot": "${workspaceFolder}"
+            "url": "http://localhost:3000",
+            "webRoot": "${workspaceFolder}",
+            // 在当前用户浏览器打开
+            "userDataDir": "${env:HOME}/.vscode/vscode-chrome-debug-userdatadir",
+            "resolveSourceMapLocations": [
+                "${workspaceFolder}/**",
+                "!**/node_modules/**"
+            ],
+            // "sourceMapPathOverrides": {
+            //     "webpack://_N_E/*": "${webRoot}/*"
+            // },
         }
     ]
 }
